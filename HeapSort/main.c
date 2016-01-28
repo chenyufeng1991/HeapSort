@@ -8,9 +8,16 @@
 
 #include <stdio.h>
 
+//调整堆
 void HeapAdjust(int *a,int i,int size);
+
+//建立堆
 void BuildHeap(int *a,int size);
+
+//堆排序
 void HeapSort(int *a,int size);
+
+//数据交换
 void swap(int *first,int *second);
 
 void HeapAdjust(int *a,int i,int size){  //调整堆
@@ -43,17 +50,15 @@ void swap(int *first,int *second){
 
 void BuildHeap(int *a,int size){    //建立堆
 
-    int i;
-    for(i = size / 2;i >= 1;i--){    //非叶节点最大序号值为size/2
+    for(int i = size / 2;i >= 1;i--){    //非叶节点最大序号值为size/2
         HeapAdjust(a,i,size);
     }
 }
 
 void HeapSort(int *a,int size){    //堆排序
 
-    int i;
     BuildHeap(a,size);
-    for(i = size;i >= 1;i--){
+    for(int i = size;i >= 1;i--){
 
         swap(&a[1],&a[i]);           //交换堆顶和最后一个元素，即每次将剩余元素中的最大者放到最后面
         //BuildHeap(a,i-1);        //将余下元素重新建立为大顶堆
