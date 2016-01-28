@@ -25,9 +25,9 @@ void HeapAdjust(int *a,int i,int size){  //调整堆
     int lchild = 2 * i;       //i的左孩子节点序号
     int rchild = 2 * i + 1;     //i的右孩子节点序号
     int max = i;            //临时变量，存储下标值
-    if(i <= size / 2){          //如果i不是叶节点就不用进行调整
+    if(i <= size / 2){          //如果i不是叶节点就不用进行调整，从非叶子节点开始；
         if(lchild <= size && a[lchild] > a[max]){
-            max = lchild;
+            max = lchild;//把较大值放到max中；
         }
         if(rchild <= size && a[rchild] > a[max]){
             max = rchild;
