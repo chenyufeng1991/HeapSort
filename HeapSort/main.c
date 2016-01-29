@@ -25,7 +25,10 @@ void HeapAdjust(int *a,int i,int size){  //调整堆
     int lchild = 2 * i;       //i的左孩子节点序号
     int rchild = 2 * i + 1;     //i的右孩子节点序号
     int max = i;            //临时变量，存储下标值
-    if(i <= size / 2){          //如果i不是叶节点就不用进行调整，从非叶子节点开始；
+    /**
+     *  改为size
+     */
+    if(i <= size){          //如果i不是叶节点就不用进行调整，从非叶子节点开始；
         if(lchild <= size && a[lchild] > a[max]){
             max = lchild;//把较大值放到max中；
         }
@@ -40,7 +43,10 @@ void HeapAdjust(int *a,int i,int size){  //调整堆
 }
 
 void BuildHeap(int *a,int size){    //建立堆
-    for(int i = size / 2;i >= 1;i--){    //非叶节点最大序号值为size/2
+    /**
+     *  改为size
+     */
+    for(int i = size;i >= 1;i--){    //非叶节点最大序号值为size/2
         HeapAdjust(a,i,size);
     }
 }
@@ -65,9 +71,9 @@ void swap(int *first,int *second){
 
 int main(int argc, const char * argv[]) {
 
-    int a[] = {0,16,20,1,25,9,2,22};
-    HeapSort(a,8);
-    for(int i = 0;i <= 7;i++){
+    int a[] = {0,16,1,25,9};
+    HeapSort(a,5);
+    for(int i = 0;i <= 4;i++){
         printf("%d ",a[i]);
     }
     return 0;
