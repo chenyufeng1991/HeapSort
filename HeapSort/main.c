@@ -65,9 +65,9 @@ void swap(int *first,int *second){
 
 int main(int argc, const char * argv[]) {
 
-    int a[] = {0,16,20,3,11,17,8};
-    HeapSort(a,7);
-    for(int i = 1;i <= 7;i++){
+    int a[] = {0,16,20,1,25,9,2,22};
+    HeapSort(a,8);
+    for(int i = 0;i <= 7;i++){
         printf("%d ",a[i]);
     }
     return 0;
