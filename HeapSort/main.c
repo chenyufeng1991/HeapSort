@@ -28,11 +28,11 @@ void HeapAdjust(int *a,int i,int size){  //调整堆
     /**
      *  改为size
      */
-    if(i < size){          //如果i不是叶节点就不用进行调整，从非叶子节点开始；
-        if(lchild < size && a[lchild] > a[max]){
+    if(i <= size){          //如果i不是叶节点就不用进行调整，从非叶子节点开始；
+        if(lchild <= size && a[lchild] > a[max]){
             max = lchild;//把较大值放到max中；
         }
-        if(rchild < size && a[rchild] > a[max]){
+        if(rchild <= size && a[rchild] > a[max]){
             max = rchild;
         }
         if(max != i){
@@ -46,7 +46,7 @@ void BuildHeap(int *a,int size){    //建立堆
     /**
      *  改为size
      */
-    for(int i = size-1;i >= 1;i--){    //非叶节点最大序号值为size/2
+    for(int i = size;i >= 1;i--){    //非叶节点最大序号值为size/2
         HeapAdjust(a,i,size);
     }
 }
@@ -54,10 +54,10 @@ void BuildHeap(int *a,int size){    //建立堆
 void HeapSort(int *a,int size){    //堆排序
     //首先要建立一个堆
     BuildHeap(a,size);
-    for(int i = size - 1;i >= 1;i--){
+    for(int i = size;i >= 1;i--){
 
-        swap(&a[0],&a[i]);           //交换堆顶和最后一个元素，即每次将剩余元素中的最大者放到最后面
-        HeapAdjust(a,i,size);      //重新调整堆顶节点成为大顶堆
+        swap(&a[1],&a[i]);           //交换堆顶和最后一个元素，即每次将剩余元素中的最大者放到最后面
+        HeapAdjust(a,1,i - 1);      //重新调整堆顶节点成为大顶堆
     }
 }
 
@@ -71,9 +71,9 @@ void swap(int *first,int *second){
 
 int main(int argc, const char * argv[]) {
 
-    int a[] = {0,16,1,25,9};
-    HeapSort(a,5);
-    for(int i = 0;i <= 4;i++){
+    int a[] = {0,16,1,25,9,22,2,10};
+    HeapSort(a,8);
+    for(int i = 0;i <= 7;i++){
         printf("%d ",a[i]);
     }
     return 0;
