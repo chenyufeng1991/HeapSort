@@ -54,10 +54,11 @@ void HeapSort(int *a,int size){
     }
 }
 
+//调整堆
 void HeapAdjust(int *a,int i,int size){
 
-    int lchild = 2 * i;
-    int rchild = 2 * i + 1;
+    int lchild = 2 * i;//左孩子节点；
+    int rchild = 2 * i + 1;//右孩子节点；
     int max = i;
 
     if (i <= size) {
@@ -71,6 +72,7 @@ void HeapAdjust(int *a,int i,int size){
 
         if (i != max) {
             swap(&a[i], &a[max]);
+            //避免调整之后以max为父节点的子树不是堆；
             HeapAdjust(a, max, size);
         }
     }
