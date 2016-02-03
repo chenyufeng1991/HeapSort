@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 
-
 void BuildHeap(int *a,int size);
 void swap(int *a,int *b);
 void HeapSort(int *a,int size);
@@ -25,6 +24,7 @@ int main(int argc,const char *argv[]){
     return 0;
 }
 
+//建立堆
 void BuildHeap(int *a,int size){
 
     for (int i = size - 1; i >= 0; i--) {
@@ -33,6 +33,7 @@ void BuildHeap(int *a,int size){
 
 }
 
+//交换两个数
 void swap(int *a,int *b){
 
     int temp;
@@ -41,11 +42,14 @@ void swap(int *a,int *b){
     *b = temp;
 }
 
+//堆排序
 void HeapSort(int *a,int size){
 
     BuildHeap(a, size);
     for (int i = size - 1; i >= 0; i--) {
-        swap(&a[0], &a[i+1]);////////////////////////////
+        //交换堆顶和最后一个元素，即每次将剩余元素中的最大者放到后面；
+        swap(&a[0], &a[i+1]);
+        //重新调整堆为大顶堆；
         HeapAdjust(a, 0, i );
     }
 }
