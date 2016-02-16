@@ -8,10 +8,10 @@
 
 #include <stdio.h>
 
-void BuildHeap(int *a,int size);
+void BuildHeap(int *a,int n);
 void swap(int *a,int *b);
-void HeapSort(int *a,int size);
-void HeapAdjust(int *a,int i,int size);
+void HeapSort(int *a,int n);
+void HeapAdjust(int *a,int i,int n);
 
 int main(int argc,const char *argv[]){
 
@@ -25,10 +25,10 @@ int main(int argc,const char *argv[]){
 }
 
 //建立堆
-void BuildHeap(int *a,int size){
+void BuildHeap(int *a,int n){
 
-    for (int i = size - 1; i >= 0; i--) {
-        HeapAdjust(a, i, size);
+    for (int i = n - 1; i >= 0; i--) {
+        HeapAdjust(a, i, n);
     }
 
 }
@@ -43,10 +43,10 @@ void swap(int *a,int *b){
 }
 
 //堆排序
-void HeapSort(int *a,int size){
+void HeapSort(int *a,int n){
 
-    BuildHeap(a, size);
-    for (int i = size - 1; i >= 0; i--) {
+    BuildHeap(a, n);
+    for (int i = n - 1; i >= 0; i--) {
         //交换堆顶和最后一个元素，即每次将剩余元素中的最大者放到后面；
         swap(&a[0], &a[i+1]);
         //重新调整堆为大顶堆；
@@ -55,25 +55,25 @@ void HeapSort(int *a,int size){
 }
 
 //调整堆
-void HeapAdjust(int *a,int i,int size){
+void HeapAdjust(int *a,int i,int n){
 
     int lchild = 2 * i;//左孩子节点；
     int rchild = 2 * i + 1;//右孩子节点；
     int max = i;
 
-    if (i <= size) {
-        if (lchild <= size && a[lchild] > a[max]) {
+    if (i <= n) {
+        if (lchild <= n && a[lchild] > a[max]) {
             max = lchild;
         }
 
-        if (rchild <= size && a[rchild] > a[max]) {
+        if (rchild <= n && a[rchild] > a[max]) {
             max = rchild;
         }
 
         if (i != max) {
             swap(&a[i], &a[max]);
             //避免调整之后以max为父节点的子树不是堆；
-            HeapAdjust(a, max, size);
+            HeapAdjust(a, max, n);
         }
     }
 }
